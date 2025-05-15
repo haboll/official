@@ -8,7 +8,8 @@ import { getPluginsList } from "./build/plugins";
 export default defineConfig({
   root,
   resolve: {
-    alias
+    alias,
+    extensions: ['.js', '.jsx', '.ts', '.jsx', '.json', '.vue']
   },
   server: {
     // 端口号
