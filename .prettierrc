@@ -1,0 +1,19 @@
+{
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "options": {
+        "parser": "vue"
+      }
+    }
+  ],
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": true,
+  "semi": false,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "parser": "babel",
+  "jsxSingleQuote": true
+}
