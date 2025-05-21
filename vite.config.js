@@ -3,6 +3,9 @@ import { alias, root, pathResolve } from "./build/utils"
 import { target, secure } from "./build/proxy"
 import { include, exclude } from "./build/opt"
 import { getPluginsList } from "./build/plugins";
+import pxtovw from 'postcss-px-to-viewport-8-plugin';
+
+
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -29,6 +32,18 @@ export default defineConfig({
     }
   },
   plugins:  getPluginsList(),
+  css: {
+    postcss: {
+      plugins: [
+        pxtovw({
+          unitToConvert: 'px', // 要转换的单位，默认为"px"
+          viewportWidth: 393, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+          unitPrecision: 3, // 单位转换后保留的精度
+          include: /^(?:(?!mobile).)*$/,  // 忽略不需要转换的文件，正则表达式
+        })
+      ]
+    }
+  },
   optimizeDeps: {
     include,
     exclude

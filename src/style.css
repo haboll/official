@@ -22,12 +22,30 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 
 #app {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  color: #fff;
+  background: none;
+}
+
+
+/* 入场动画 从左到右*/
+.enter-from {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.enter-active {
+  opacity: 1;
+  transform: translateX(0);
 }
