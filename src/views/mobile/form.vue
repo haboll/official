@@ -1,7 +1,6 @@
 <template>
-    <div class="form-wrapper">
-
-        <form @submit.prevent="handleSubmit" class="form-container">
+    <div class="form-wrapper" >
+        <form v-animate @submit.prevent="handleSubmit" class="form-container">
             <!-- 姓名 -->
             <div class="form-item">
                 <label class="form-label">姓名</label>

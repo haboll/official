@@ -1,5 +1,5 @@
 <template>
-    <div class="qr-container">
+    <div v-animate class="qr-container">
         <!-- 文本区域 -->
         <div class="text-section">
             <p class="main-title">扫码联系我们</p>

@@ -1,7 +1,6 @@
 <template>
   <div class="success-case">
-    <case-card v-for="item in caseData" v-bind="item"></case-card>
-
+    <case-card v-animate v-for="item in caseData" v-bind="item" :isSuccess="true"></case-card>
   </div>
 </template>
 <script setup>
@@ -24,7 +23,7 @@ const caseData = [
 </script>
 <style scoped lang="less">
 .success-case {
-  margin-top: 40px;
+  margin-bottom: 100px;
   width: 100%;
 }
 </style>

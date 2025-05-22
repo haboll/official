@@ -1,11 +1,21 @@
 <template>
-  <div class="header">
-    <div class="header-left"></div>
-    <button class="header-button">联系我们</button>
-  </div>
+  <transition name="moving">
+    <div v-show="!props.isMoving" class="header">
+      <div class="header-left"></div>
+      <button class="header-button" @click="contactUs">联系我们</button>
+    </div>
+  </transition>
+
 </template>
 <script setup>
-
+import { defineEmits, defineProps } from "vue";
+const emit = defineEmits(["contactUs"]);
+const props = defineProps({ isMoving: Boolean });
+const contactUs = () => {
+  // Handle contact us button click
+  console.log("Contact Us button clicked");
+  emit("contactUs");
+};
 </script>
 <style scoped lang="less">
 .header {
@@ -20,6 +30,17 @@
   box-sizing: border-box;
   align-items: center;
   background-color: #05193D;
+  z-index: 100;
+}
+
+.moving-enter-active,
+.moving-leave-active {
+  transition: all 1s ease;
+}
+
+.moving-leave-to {
+  top: -80px;
+  opacity: 0;
 }
 
 .header-left {

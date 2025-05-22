@@ -37,15 +37,67 @@ button {
   background: none;
 }
 
-
 /* 入场动画 从左到右*/
 .enter-from {
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateX(-200px);
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .enter-active {
   opacity: 1;
   transform: translateX(0);
+}
+
+.border-wrap {
+    position: relative;
+}
+
+.border-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    animation: clippath 6s infinite linear;
+}
+
+@keyframes clippath {
+    100%,
+    0% {
+        clip-path: inset(0 50% calc(100% - 1px) 0);
+    }
+
+    12.5% {
+        clip-path: inset(0 0 calc(100% - 1px) 50%);
+    }
+
+    25% {
+        clip-path: inset(0 0 50% calc(100% - 1px));
+    }
+
+    37.5% {
+
+        clip-path: inset(50% 0 0 calc(100% - 1px));
+    }
+
+    50% {
+        clip-path: inset(calc(100% - 1px) 0 0 50%);
+    }
+
+    62.5% {
+        clip-path: inset(calc(100% - 1px) 50% 0 0);
+    }
+
+    75% {
+        clip-path: inset(50% calc(100% - 1px) 0 0);
+    }
+
+    87.5% {
+        clip-path: inset(0 calc(100% - 1px) 50% 0);
+    }
 }

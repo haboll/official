@@ -13,7 +13,7 @@ import TextCard from '@/components/textCard.vue';
 <style scoped lang="less">
 .about-us {
   width: 100%;
-  padding: 1.5rem;
+  padding: 18px;
   box-sizing: border-box;
 }
 .text-card {

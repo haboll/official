@@ -1,11 +1,11 @@
 <template>
-  <div class="vertical-container">
+  <div :class="['vertical-container', { 'is-success': isSuccess }]">
     <!-- 渐变圆形按钮 -->
-    <div class="gradient-btn" >{{ buttonText }}</div>
+    <div class="gradient-btn">{{ buttonText }}</div>
 
     <!-- 主图片展示 -->
-    <div v-if="isSuccess" class="main-image-container">
-      <img :src="mainImage" :alt="mainAlt" class="main-image"  >
+    <div v-if="!isSuccess" v-rotate-border class="main-media-container">
+      <video-container class="main-image" :videoSrc="videoSrc"></video-container>
     </div>
 
     <!-- 标题图片 -->
@@ -19,18 +19,19 @@
     </div>
 
     <!-- 主图片展示 -->
-    <div v-if="!isSuccess" class="main-image-container">
+    <div v-if="isSuccess" class="main-image-container">
       <img :src="mainImage" :alt="mainAlt" class="main-image">
     </div>
   </div>
 </template>
 
 <script setup>
+import VideoContainer from './videoContainer.vue';
 const props = defineProps({
   // 按钮相关
   buttonText: {
     type: String,
-    default: '点击'
+    default: ''
   },
   gradientColors: {
     type: Array,
@@ -44,11 +45,11 @@ const props = defineProps({
   },
   titleAlt: {
     type: String,
-    default: '标题图片'
+    default: ''
   },
-   titleHeight: {
+  titleHeight: {
     type: String,
-    default: '29px'
+    default: ''
   },
 
   // 文字内容
@@ -60,13 +61,16 @@ const props = defineProps({
   // 主图片
   mainImage: {
     type: String,
-    required: true
+    default: ''
   },
   mainAlt: {
     type: String,
-    default: '主图'
+    default: ''
   },
- 
+  videoSrc: {
+    type: String,
+    default: ''
+  },
   // 成功案例， 图片展示在文本上方
   isSuccess: {
     type: Boolean,
@@ -78,20 +82,33 @@ const props = defineProps({
 
 <style scoped>
 .vertical-container {
-  padding: 1.5rem;
-  margin-top: 60px;
+  padding: 10px 18px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.is-success {
+
+  .title-image-container,
+  .description {
+    margin-top: 20px;
+  }
+
+  .title-image {
+    height: 29px;
+  }
 }
 
 /* 按钮样式 */
 .gradient-btn {
-  width: 4rem;
-  height: 2rem;
-  line-height: 2rem;
-  border-radius: 2rem;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 10px;
   color: white;
-  font-size: 0.8rem;
+  font-size: 8px;
   margin: auto;
-  background: linear-gradient(270deg,#8C0BFC 0%, #0B42FC 100%);
+  background: linear-gradient(270deg, #8C0BFC 0%, #0B42FC 100%);
 }
 
 .gradient-btn:hover {
@@ -101,22 +118,24 @@ const props = defineProps({
 /* 标题图片 */
 .title-image-container {
   width: 100%;
-  margin-bottom: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
+  margin: 16px auto 0;
 }
+
 
 .title-image {
   max-width: 100%;
+  height: 17px;
   object-fit: contain;
+  margin: 8px auto 0;
 }
 
 /* 文字介绍 */
 .description {
   font-size: 0.65rem;
-  
+  margin-top: 8px;
 }
 
 .description pre {
@@ -127,9 +146,17 @@ const props = defineProps({
 }
 
 /* 主图片区域 */
+.main-media-container {
+  position: relative;
+  margin-top: 16px;
+}
+
 .main-image-container {
   position: relative;
-  margin: 16px 0;
+  margin-top: 16px;
+  margin-top: 32px;
+  padding: 6px;
+  box-sizing: border-box;
 }
 
 .main-image {
